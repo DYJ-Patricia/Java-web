@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="a.css"?>
+<users>
+    <user id="1">
+        <name>Patricia</name>
+        <age>19</age>
+        <gender>female</gender>
+    </user>
+    <user id="2">
+        <name>John</name>
+        <age>25</age>
+        <gender>male</gender>
+
+    </user>
+</users>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表格全选</title>
+    <style>
+        .over{
+            background-color: #f0f0f0;
+        }
+        .out{
+            background-color: #fff;
+        }
+        table{
+            border: 1px solid;
+            width: 500px;
+            margin-left: 30%;
+        }
+
+        td,th{
+            text-align: center;
+            border: 1px solid;
+        }
+        div{
+            margin-top: 10px;
+            margin-left: 30%;
+        }
+    </style>
+</head>
+<body>
+
+<script>
+    window.onload=function(){
+        document.getElementById("selectAll").onclick=function(){
+            var cbs=document.getElementsByName("cb");
+            for(var i=0;i<cbs.length;i++){
+                cbs[i].checked=true;
+            }
+        }
+        document.getElementById("selectNone").onclick=function(){
+            var cbs=document.getElementsByName("cb");
+            for(var i=0;i<cbs.length;i++){
+                cbs[i].checked=false;
+            }
+        }
+        document.getElementsByName("selectReverse").onclick=function(){
+            var cbs=document.getElementsByName("cb");
+            for(var i=0;i<cbs.length;i++){
+                cbs[i].checked=!cbs[i].checked;
+            }
+        }
+        document.getElementById("firstCb").onclick=function(){
+            var cbs=document.getElementsByName("cb");
+            for(var i=0;i<cbs.length;i++){
+                cbs[i].checked=this.checked;
+            }
+        }
+        var trs=document.getElementsByTagName("tr");
+        for(var i=0;i<trs.length;i++){
+            trs[i].onmouseover=function(){
+                this.className="over";
+            }
+            trs[i].onmouseout=function(){
+                this.className="out";
+            }
+        }
+        var deleteLinks=document.querySelectorAll("a[href='javascript:void(0);']");
+        deleteLinks.forEach(function(link){
+            link.onclick=function(){
+               if(confirm("你确定要删除吗？")){
+                   var tr=this.parentNode.parentNode;
+                   tr.parentNode.removeChild(tr);
+               }
+            };
+        });
+    };
+
+</script>
+
+<table id="table">
+
+    <caption>学生信息表</caption>
+    <tr>
+        <th><input type="checkbox" id="firstCb" name="cb"></th>
+        <th>编号</th>
+        <th>姓名</th>
+        <th>性别</th>
+        <th>操作</th>
+    </tr>
+        <tr>
+            <td><input type="checkbox" name="cb"></td>
+            <td>1</td>
+            <td>张三</td>
+            <td>男</td>
+            <td><a href="javascript:void(0);">删除</a></td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="cb"></td>
+            <td>2</td>
+            <td>李四</td>
+            <td>女</td>
+            <td><a href="javascript:void(0);">删除</a></td>
+        </tr>
+            <td><input type="checkbox" name="cb"></td>
+            <td>3</td>
+            <td>王五</td>
+            <td>男</td>
+            <td><a href="javascript:void(0);">删除</a></td>
+        </tr>
+
+</table>
+        <div>
+            <input type="button" value="全选" id="selectAll">
+            <input type="button" value="反选" id="selectReverse">
+            <input type="button" value="全不选" id="selectNone">
+        </div>
+
+</script>
+</body>
+</html>
